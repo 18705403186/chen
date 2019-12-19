@@ -1,0 +1,15 @@
+.btn-restore {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.task3-table {
+    border-collapse: collapse;
+    border: 2px solid #333333;
+}
+
+.task3-table td,
+.task3-table th {
+    border: 2px solid #555555;
+}

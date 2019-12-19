@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title></title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    </head>
+    <body>
+        <button class="restore-page">Обновить страницу</button>
+        <div class="content"></div>
+        <script>
+            $(`.restore-page`).click(function() {
+                $(`.content`).load(`https://inxaoc.github.io/example/ajax-1.html`);
+
+                jQuery.ajax({
+                    url: `https://inxaoc.github.io/example/ajax.json`,
+                    success: function(data) {
+                        console.log(data);
+
+                        let code = `<ul>`;
+                        code += (function makeList(data) {
+                            let subCode = ``;
+                            for (const key in data) {
+                                if (data.hasOwnProperty(key)) {
+                                    const element = data[key];
+
+                                    subCode += `<li>${key}: `;
+                                    // console.log(typeof element === `object`);
+
+                                    if (typeof element === `object`) {
+                                        subCode += `<ul>`;
+                                        subCode += makeList(element);
+                                        subCode += `</ul>`;
+                                    } else if (typeof element === `array`) {
+                                        subCode;
+                                    } else {
+                                        subCode += `${element}`;
+                                    }
+                                    subCode += `</li>`;
+
+                                    // console.log(`${key}: ${element}`);
+                                    // console.log(`${code}`);
+                                }
+                            }
+                            return subCode;
+                        })(data);
+                        code += `</ul>`;
+
+                        console.log(`\n\n\n${code}`);
+
+                        $(`.content`).append(code);
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
