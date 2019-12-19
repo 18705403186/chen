@@ -1,0 +1,202 @@
+<html>
+<head>
+<LINK REL="stylesheet" TYPE="text/css" href="style.css">
+<title>JS презентация (3-4)</title>
+<META CHARSET="UTF-8">
+</head>
+<body bgcolor="#ffc0cb" text="#6495ed" link="808080">
+
+<div id="buttonTask">
+<div id="button1">
+<em><h2>кнопка</h2></em>
+<form id="buttonForm">
+<input type="button" id="btn" value="одноразовая кнопка" onclick="Disposable()" name="Button">
+</form>
+<script type="text/javascript">
+function Disposable()
+{
+document.getElementById("btn").disabled = true;
+}
+</script>
+</div>
+<div id="button2">
+<p>имя кнопки</p>
+<script type="text/javascript">
+{
+document.write(document.getElementById("btn").name);
+}
+</script>
+</div>
+<div id="button3">
+<p>тип кнопки</p>
+<script type="text/javascript">
+{
+document.write(document.getElementById("btn").type);
+}
+</script>
+</div>
+<div id="button4">
+<p>текст кнопки</p>
+<script type="text/javascript">
+{
+document.write(document.getElementById("btn").value);
+}
+</script>
+</div>
+<div id="button5">
+<p>Показать id формы, которой принадлежит кнопка</p>
+<script type="text/javascript">
+{
+document.write(document.getElementById("btn").form.id);
+}
+</script>
+</div>
+</div>
+<br>
+<br>
+<em><h2>форма</h2></em>
+
+<div id="formTask">
+<div>
+<u><em><p>разбираемая форма</p></em></u>
+<form id="formForm" action="form_action.php" name="thisIsAForm">
+строка: <input type="text" name="number" value="444" /><br>
+тоже строка: <input type="text" name="number2" value="333" /><br>
+
+<input type="button" onclick="formSubmit()" value="любая информация полезна"/>
+</form>
+</div>
+<div>
+
+<script type="text/javascript">
+document.write("Значения:<br>");
+var x=document.getElementById("formForm");
+for (var i=0;i<x.length;i++)
+{
+document.write(x.elements[i].value);
+document.write(", ");
+}
+document.write("<br><br><u>Аction:</u> ");
+document.write(document.getElementById("formForm").action);
+document.write("<br><br><u>Enctype:</u> ");
+document.write(document.getElementById("formForm").enctype);
+document.write("<br><br><u>Количество элементов:</u> ");
+document.write(document.getElementById("formForm").length);
+document.write("<br><br><u>Метод:</u> ");
+document.write(document.getElementById("formForm").method);
+document.write("<br><br><u>Имя:</u> ");
+document.write(document.getElementById("formForm").name);
+</script>
+<br>
+<br>
+
+<u><em><p>капризная форма</p></em></u>
+<form id="noForm">
+строка: <input type="text" name="numberq"/><br>
+тоже строка: <input type="text" name="number2q"/><br>
+<input type="button" onclick="no()" value="нет"/>
+</form>
+
+<script type="text/javascript">
+function no()
+{
+document.getElementById("noForm").reset();
+}
+</script>
+
+<u><em><p>отправляемая форма</p></em></u>
+<form id="sendForm">
+оу: <input type="text" name="fml"><br>
+вау: <input type="text" name="fml2"><br>
+<input type="button" name="sendForm" onclick="send()" value="отправить">
+</form>
+
+<script type="text/javascript">
+function send()
+{
+document.getElementById("sendForm").submit();
+alert("форма отправлена");
+}
+</script>
+</div>
+
+</div>
+<br>
+<br>
+
+<div id="imageTask">
+<div>
+<em><h2>изображение</h2></em>
+<p>к р а с и в о</p>
+<img src="https://www.blackpantera.ru/articles/wp-content/uploads/2019/11/ne-multfilmy-a-durdom-psihicheskie-rasstroystva-nazvannye-v-chest-disneevskih-geroev-1.png" id="magic" alt="у Золушки нет красивого платья" name="Krasivo">
+
+</div>
+
+<div id="image1">
+<input type="button" name="aligning" id="align" onclick="alignRight()" value="выровнять картинку по правому краю">
+<input type="button" name="aligning2" id="align2" onclick="alignLeft()" value="выровнять картинку по левому краю">
+<script type="text/javascript">
+function alignRight()
+{
+document.getElementById("magic").align="right";
+}
+function alignLeft()
+{
+document.getElementById("magic").align="left";
+}
+</script>
+</div>
+<br>
+<br>
+<div id="image2">
+<script type="text/javascript">
+document.write("альтернативный текст: ");
+document.write(document.getElementById("magic").alt);
+</script>
+</div>
+<br>
+<div id="image3">
+<input type="button" name="borger" id="border" onclick="border()" value="Граница">
+<script
+ 
+type="text/javascript">
+function border()
+{
+document.getElementById("magic").border="7";
+}
+</script>
+</div>
+<div id="image4">
+<input type="button" name="size" id="size" onclick="sizeimg()" value="Уменьшить">
+<script type="text/javascript">
+function sizeimg()
+{
+document.getElementById("magic").height="200";
+document.getElementById("magic").width="300";
+}
+</script>
+</div>
+<br>
+<div id="image5">
+<script type="text/javascript">
+document.write("название изображения: ");
+document.write(document.getElementById("magic").name);
+</script>
+</div>
+<br>
+<div id="image6">
+<input type="button" name="magic" id="verymagic" value="нажмите для магии" onclick="magicf()">
+<script type="text/javascript">
+function magicf()
+{
+document.getElementById("magic").src="http://www.sobaka.ru/images/image/01/03/28/97/_normal.jpg";
+}
+</script>
+</div>
+
+</div>
+<br>
+<br>
+
+</body>
+</html>
